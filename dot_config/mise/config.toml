@@ -1,0 +1,6 @@
+[tools]
+java = "latest"
+node = "lts"
+python = "latest"
+
+[settings.upgrade]

@@ -1,0 +1,12 @@
+# Upload files to the Xteink reader (File Transfer screen must be open)
+addwaddle() {
+  local ip="${WADDLE_IP:-192.168.50.185}"
+  local f
+  for f in "$@"; do
+    curl -sf -F "file=@$f" "http://$ip/upload?path=/" && echo "✓ $f" || echo "✗ $f"
+  done
+}
+. "$HOME/.local/share/../bin/env"
+waddlebook()   { curl -sL https://raw.githubusercontent.com/ArneeMe/waddleos/waddle/tools/waddlebook | python3 - "$@"; }
+waddleupdate() { curl -sL https://raw.githubusercontent.com/ArneeMe/waddleos/waddle/tools/waddle-update | python3 - "$@"; }
+addwaddle()    { curl -sL https://raw.githubusercontent.com/ArneeMe/waddleos/waddle/tools/addwaddle | bash -s -- "$@"; }
